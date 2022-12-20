@@ -8,5 +8,5 @@ class Qustes_Controller extends GetxController{
   RxList<Map>QuotesList = <Map>[].obs;
   Data_Model?Datapick;
 
-  CountdownController ? countdownController= CountdownController(autoStart:false) ;
+
 }
