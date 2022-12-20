@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:database/controller/quotes_Conteoller.dart';
 import 'package:database/view/addforQuotes.dart';
 import 'package:flutter/material.dart';
@@ -70,9 +71,9 @@ class _Home_ScreenState extends State<Home_Screen> {
             ],
           ),
         ),
-        body: Obx(() => ListView.builder(
+        body: Obx(() => CarouselSlider.builder(
               itemCount: qustes_controller.QuotesList.value.length,
-              itemBuilder: (context, index) {
+              itemBuilder: (context, index,_) {
                 return Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Container(
@@ -85,6 +86,17 @@ class _Home_ScreenState extends State<Home_Screen> {
                   ),
                 );
               },
+            options:CarouselOptions(
+                height: 100,
+                autoPlay: true,
+                viewportFraction:1,
+                enlargeCenterPage: true,
+                autoPlayInterval: Duration(seconds: 8),
+                onPageChanged: (index , _){
+                  qustes_controller.changsposition(index);
+                }
+            ),
+
             )),
         floatingActionButton: FloatingActionButton(
           child: new Icon(Icons.add),
